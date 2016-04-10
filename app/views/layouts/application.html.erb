@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FanSite</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+	  	<title>FanSite</title>
+	  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  	<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="nav navbar navbar-default">
+			<div class="container">
+				<div class="navbar-brand">
+					<%= link_to "Home", root_path %>
+				</div>
+				<% if user_signed_in? %>
+					<ul class="nav navbar-nav navbar-right">
+						<li><%= link_to "Account", edit_user_registration_path %></li>
+						<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+					</ul>
+				<% else %>
+					<ul class="nav navbar-nav navbar-right">
+						<li><%= link_to "Sign Up", new_user_registration_path %></li>
+						<li><%= link_to "Sign In", new_user_session_path %></li>
+					</ul>
+				<% end %>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-md-8 col-md-offset-2">
+				<% flash.each do |name, msg| %>
+					<div class="alert alert-info fade in">
+				    <button class="close" data-dismiss="alert">×</button>
+				    <%= msg %>
+				  </div>
+				<% end %>
+				<%= yield %>
+			</div>
+		</div>
+	</body>
 </html>
