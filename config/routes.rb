@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
-    get 'welcome/index'
+  	resources :leagues do
+  		resources :teams
+  	end
+  	
+	devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+   	get 'welcome/index'
 
-    root 'welcome#index'
+	root 'leagues#index'
 
 end

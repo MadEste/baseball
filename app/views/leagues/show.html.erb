@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  	<strong>Title:</strong>
+	<%= @league.title %>
+	<strong>League ID</strong>
+  	<%= @league.leagueID %>
+</p>
+
+<% @league.teams.each do |team| %>
+	<p><%= team.title %></p>
+	<p><%= team.id %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_league_path(@league) %> |
+<%= link_to 'Back', leagues_path %>
