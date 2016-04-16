@@ -195,6 +195,7 @@ DEPENDENCIES
   devise (~> 3.5, >= 3.5.6)
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri (~> 1.6, >= 1.6.7.2)
   omniauth-facebook (~> 3.0)
   omniauth-google-oauth2 (~> 0.4.1)
   pg
