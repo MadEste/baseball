@@ -21,8 +21,15 @@ class League < ActiveRecord::Base
 		#league Name
 		update_attribute(:title, doc.at_xpath("//*[@id='content']/div/div[2]/div[1]/a[3]").text)
 		doc.css(".playerTableTable.tableBody").each do |team|
-			#Team Name
-			self.teams.create(:title => team.at_css(".playertableSectionHeader a").text)
-		end
+			#Create team and assign to temp variable for now
+			temp=self.teams.create(:title => team.at_css(".playertableSectionHeader a").text)
+			team.css(".pncPlayerRow").each do |player|
+		   	if player.at_css(".playertablePlayerName")
+		   		#use temp variable to create player and add to team
+		   		temp.players.create(:title => player.at_css(".playertablePlayerName").text[/[^\*,]*/],
+		   							  :mlb_team => player.at_css(".playertablePlayerName").text[/(?<=,\s)(\w+)/])
+		   	end
+		   end
+	   end
 	end
 end

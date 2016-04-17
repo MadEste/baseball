@@ -6,11 +6,15 @@
 	<strong>League ID</strong>
   	<%= @league.leagueID %>
 </p>
-
-<% @league.teams.each do |team| %>
-	<p><%= team.title %></p>
-	<p><%= team.id %></p>
-<% end %>
-
+	<div class="row">
+		<% @league.teams.each do |team| %>
+			<div class="col-md-4"> 	
+			<p><strong><%= team.title %></strong></p>
+			<% team.players.each do |player| %>
+				<p><%= player.title %> - <%= player.mlb_team %></p>
+			<% end %>
+			</div>
+		<% end %>
+	</div>
 <%= link_to 'Edit', edit_league_path(@league) %> |
 <%= link_to 'Back', leagues_path %>
