@@ -9,7 +9,7 @@
 	<div class="row">
 		<% @league.teams.each do |team| %>
 			<div class="col-md-4"> 	
-			<p><strong><%= team.title %></strong></p>
+			<p><strong><%= link_to team.title, league_team_path(@league, team) %></strong><%= team.id %></p>
 			<% team.players.each do |player| %>
 				<p><%= player.title %> - <%= player.mlb_team %></p>
 			<% end %>

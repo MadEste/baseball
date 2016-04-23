@@ -1,0 +1,22 @@
+<h1><%= @team.title %></h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Team</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team.players.each do |player| %>
+      <tr>
+        <td><%= player.title %></td>
+        <td><%= player.mlb_team %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Leagues Index', leagues_path, style: :"margin: 25px; padding-bottom: 25px;" %>
+<br>
+<%= link_to @team.league.title, @team.league, style: :"margin: 25px; padding-bottom: 25px; padding-top: 25px;" %>
