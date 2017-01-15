@@ -16756,3 +16756,12 @@ Processing by LeaguesController#index as HTML
   Rendered leagues/index.html.erb within layouts/application (2.1ms)
   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
 Completed 200 OK in 106ms (Views: 104.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2017-01-14 19:01:15 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (19.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LeaguesController#index as HTML
+  [1m[35mLeague Load (25.9ms)[0m  SELECT "leagues".* FROM "leagues"
+  Rendered leagues/index.html.erb within layouts/application (62.8ms)
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 4639ms (Views: 4505.2ms | ActiveRecord: 54.3ms)
